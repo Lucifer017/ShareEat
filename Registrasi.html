@@ -5,16 +5,12 @@
 		<style type="text/css">
 			
 			.wrapper{
-				width:400px;
-				height:500px;
-			
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				
-				margin-top:-250px;
-				margin-left:-200px;
+				width:800px;
+				height:700px;
 				background-color:#d6e5f4;
+				position: absolute;
+				margin-top:0px;
+				margin-left:270px;
 			}
 			.logo{
 				float: left;
@@ -35,38 +31,18 @@
 			}
 			
 			aside{
-				width: 300px;
-				height: 250px;
+				width: 750px;
+				height: 350px;
 				border: 0px solid black;
 				margin-top:140px;
-				margin-left:50px;
+				margin-left:60px;
 			}
 			aside fieldset{
-				
+				width: 750px;
+				height: 350px
 				border: 0px solid black;
+				margin-left:-20px;
 			}
-			
-			.kotak{
-				width:33px;
-				height:34px;
-				position: absolute;
-				margin-top:183px;
-				margin-left:30px;
-				border: 1px solid gray;
-				background-color : white;
-				
-				}
-				
-				.kotak1{
-				width:33px;
-				height:34px;
-				position: absolute;
-				margin-top:237px;
-				margin-left:30px;
-				border: 1px solid gray;
-				background-color : white;
-				
-				}
 				
 				
 			aside fieldset img{
@@ -75,13 +51,14 @@
 				height:30px;
 				float : left;
 				position: absolute;
-				margin-top: 3px;
-				margin-left:-32px;
+				margin-top: 27px;
+				margin-left:-6px;
 			}
 			aside fieldset input{
 				
 				width: 300px;
 				height: 30px;
+				margin: 25px;
 			}
 			
 			
@@ -98,6 +75,17 @@
 				margin-left:-150px;
 				background-color:white;
 			}
+			
+			aside fieldset kotak{
+				width:33px;
+				height:34px;
+				position: absolute;
+				margin-top: 25px;
+				margin-left:-10px;
+				border: 1px solid gray;
+				background-color : white;
+				
+				}
 			
 			aside fieldset button{
 				width: 330px;
@@ -159,12 +147,22 @@
 				<fieldset>
 					<center> Login Ke Akun Anda </center>
 					<br>
-					<img src="Profile.png"><input type="text" name="text" placeholder="username">
+					<kotak>  </kotak> 
+					<img src="Profile.png"><input type="text" name="text" placeholder="Nomor HP utama">
+					<kotak> </kotak> 
+					<img src="password.png"><input type="text" name="text" placeholder="Nomor Telepon Alternatif">
 					<br> <br>
-					<img src="password.png"><input type="password" name="password" placeholder="password">
+					<kotak>  </kotak> 
+					<img src="Profile.png"><input type="text" name="text" placeholder="Username Yang Diinginkan">
+					<kotak>  </kotak> 
+					<img src="password.png"><input type="text" name="text" placeholder="Alamat Email Anda">
 					<br> <br>
-					<cek> Saya Bukan Robot </cek>
+					<kotak>  </kotak> 
+					<img src="Profile.png"><input type="password" name="password" placeholder="password">
+					<kotak>  </kotak> 
+					<img src="password.png"><input type="password" name="password" placeholder="Ulangi password">
 					<br> <br>
+					
 					<button>LOGIN</button>
 				</fieldset>
 			</aside>
