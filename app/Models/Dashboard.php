@@ -16,7 +16,7 @@
       $carilokasi = $conn->prepare("SELECT lokasi FROM info_user WHERE username='LuciferQueen'") ;
       $carilokasi->execute();
       $lokasi = $carilokasi->fetch(PDO::FETCH_ASSOC);
-      // var_dump($lokasi);
+      //  var_dump($lokasi);
       // die($lokasi["lokasi"]);
      ?>
     <script>
@@ -185,6 +185,7 @@
         infoWindow.open(map);
       }
     </script>
+    <a href="logout.php">Logout</a>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7h1HvvQEbhRiwxONvAQnDlquHFCBxpr4&callback=initMap">
     </script>
