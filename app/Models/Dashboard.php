@@ -9,7 +9,7 @@
     </style>
   </head>
   <body>
-    <h3>Google Maps</h3>
+    <h3>ShareEat</h3>
     <div id="map"></div>
     <script>
       // function initMap() {
@@ -44,6 +44,13 @@
         marker.addListener('click', function(){
           infoWindow.open(map, marker);
         });*/
+
+        // Click map
+        google.maps.event.addListener(map, 'click',
+          function(event){
+            addMarker({coords:event.latLng});
+          }
+        );
 
         //Array Marker
         var marker = [
