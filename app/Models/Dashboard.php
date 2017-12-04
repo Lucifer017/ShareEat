@@ -36,18 +36,72 @@
 
 
       function initMap(){
+        var map = new google.maps.Map(document.getElementById('map'),{
+          zoom:15,
+          center:{lat: -34.397, lng: 150.644}
+        });
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
+            var map = new google.maps.Map(document.getElementById('map'),{
+              zoom:15,
+              center:{lat: pos.lat, lng: pos.lng}
+            });
+
+            var marker = [
+              {
+                coords:<?php echo $lokasi["lokasi"]; ?>,
+                iconImage:'https://i.imgur.com/tquMa3E.png',
+                content:'<h1>Irfan Firdaus</h1>'
+              },
+              {
+                coords:{lat: pos.lat, lng: pos.lng },
+                iconImage:'https://i.imgur.com/RrJxXhq.png',
+                content:'<h1>Habib</h1>'
+              }
+            ];
+
+            for(var i = 0; i<marker.length;i++){
+              addMarker(marker[i]);
+            }
+
+            function addMarker(obj){
+              var marker = new google.maps.Marker({
+                  position: obj.coords,
+                  map: map,
+                  // icon:obj.iconImage
+                });
+
+                if(obj.iconImage){
+                  marker.setIcon(obj.iconImage);
+                }
+
+                if(obj.content){
+                  var infoWindow = new google.maps.InfoWindow({
+                    content:obj.content
+                  })
+
+                  marker.addListener('click', function(){
+                    infoWindow.open(map, marker);
+                  });
+                }
+            }
+            // var marker = new google.maps.Marker({
+            //     position: {lat: pos.lat, lng: pos.lng },
+            //     map: map,
+            //     icon:'https://i.imgur.com/tquMa3E.png'
+            // });
+          },
+
+          function() {
+            handleLocationError(true, infoWindow, map.getCenter());
           });
-          var option = {
-            zoom:15,
-            center:<?php echo $lokasi["lokasi"]; ?>
-          }
-          map = new google.maps.Map(document.getElementById('map'), option);
+        }else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
         }
         // var option = {
         //   zoom:15,
@@ -73,30 +127,19 @@
 
 
         // Click map
-        google.maps.event.addListener(map, 'click',
-          function(event){
-            addMarker({coords:event.latLng});
-          }
-        );
+        // google.maps.event.addListener(map, 'click',
+        //   function(event){
+        //     addMarker({coords:event.latLng});
+        //   }
+        // );
 
         //Array Marker
-        var marker = [
-          {
-            coords:<?php echo $lokasi["lokasi"]; ?>,
-            iconImage:'https://i.imgur.com/tquMa3E.png',
-            content:'<h1>Irfan Firdaus</h1>'
-          },
-          {
-            coords:{lat: -6.9270, lng: 107.7162},
-            iconImage:'https://i.imgur.com/RrJxXhq.png',
-            content:'<h1>Habib</h1>'
-          }
-        ];
+
 
         // Panggil marker
-        for(var i = 0; i<marker.length;i++){
-          addMarker(marker[i]);
-        }
+        // for(var i = 0; i<marker.length;i++){
+        //   addMarker(marker[i]);
+        // }
         // addMarker({
         //   coords:{lat: -6.9313, lng: 107.7173},
         //   iconImage:'https://i.imgur.com/tquMa3E.png',
@@ -109,27 +152,34 @@
         // });
 
         // Add Marker Fuction
-        function addMarker(obj){
-          var marker = new google.maps.Marker({
-              position: obj.coords,
-              map: map,
-              // icon:obj.iconImage
-            });
-
-            if(obj.iconImage){
-              marker.setIcon(obj.iconImage);
-            }
-
-            if(obj.content){
-              var infoWindow = new google.maps.InfoWindow({
-                content:obj.content
-              })
-
-              marker.addListener('click', function(){
-                infoWindow.open(map, marker);
-              });
-            }
-        }
+        // function addMarker(obj){
+        //   var marker = new google.maps.Marker({
+        //       position: obj.coords,
+        //       map: map,
+        //       // icon:obj.iconImage
+        //     });
+        //
+        //     if(obj.iconImage){
+        //       marker.setIcon(obj.iconImage);
+        //     }
+        //
+        //     if(obj.content){
+        //       var infoWindow = new google.maps.InfoWindow({
+        //         content:obj.content
+        //       })
+        //
+        //       marker.addListener('click', function(){
+        //         infoWindow.open(map, marker);
+        //       });
+        //     }
+        // }
+      }
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
       }
     </script>
     <script async defer
