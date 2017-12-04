@@ -11,6 +11,14 @@
   <body>
     <h3>ShareEat</h3>
     <div id="map"></div>
+    <?php
+      require 'database.php';
+      $carilokasi = $conn->prepare("SELECT lokasi FROM info_user WHERE username='LuciferQueen'") ;
+      $carilokasi->execute();
+      $lokasi = $carilokasi->fetch(PDO::FETCH_ASSOC);
+      // var_dump($lokasi);
+      // die($lokasi["lokasi"]);
+     ?>
     <script>
       // function initMap() {
       //   var uluru = {lat: -6.9313, lng: 107.7173 };
@@ -26,7 +34,7 @@
       function initMap(){
         var option = {
           zoom:15,
-          center:{lat: -6.9313, lng: 107.7173 }
+          center:<?php echo $lokasi["lokasi"]; ?>
         }
         var map = new
         google.maps.Map(document.getElementById('map'), option);
@@ -55,7 +63,7 @@
         //Array Marker
         var marker = [
           {
-            coords:{lat: -6.9313, lng: 107.7173},
+            coords:<?php echo $lokasi["lokasi"]; ?>,
             iconImage:'https://i.imgur.com/tquMa3E.png',
             content:'<h1>Irfan Firdaus</h1>'
           },
