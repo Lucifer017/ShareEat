@@ -31,21 +31,23 @@
       //     map: map
       //   });
       // }
-      var map, infoWindow;
-
-
+      var infoWindow;
 
       function initMap(){
+
         var map = new google.maps.Map(document.getElementById('map'),{
           zoom:15,
           center:{lat: -34.397, lng: 150.644}
         });
+
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
+
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
+
             var map = new google.maps.Map(document.getElementById('map'),{
               zoom:15,
               center:{lat: pos.lat, lng: pos.lng}
@@ -53,12 +55,12 @@
 
             var marker = [
               {
-                coords:<?php echo $lokasi["lokasi"]; ?>,
+                coords:{lat: pos.lat, lng: pos.lng },
                 iconImage:'https://i.imgur.com/tquMa3E.png',
                 content:'<h1>Irfan Firdaus</h1>'
               },
               {
-                coords:{lat: pos.lat, lng: pos.lng },
+                coords:<?php echo $lokasi["lokasi"]; ?>,
                 iconImage:'https://i.imgur.com/RrJxXhq.png',
                 content:'<h1>Habib</h1>'
               }
@@ -103,6 +105,7 @@
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
+
         // var option = {
         //   zoom:15,
           // center:<?php echo $lokasi["lokasi"]; ?>
