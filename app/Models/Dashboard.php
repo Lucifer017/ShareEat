@@ -31,13 +31,30 @@
       //     map: map
       //   });
       // }
+      var map, infoWindow;
+
+
+
       function initMap(){
-        var option = {
-          zoom:15,
-          center:<?php echo $lokasi["lokasi"]; ?>
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+          });
+          var option = {
+            zoom:15,
+            center:<?php echo $lokasi["lokasi"]; ?>
+          }
+          map = new google.maps.Map(document.getElementById('map'), option);
         }
-        var map = new
-        google.maps.Map(document.getElementById('map'), option);
+        // var option = {
+        //   zoom:15,
+          // center:<?php echo $lokasi["lokasi"]; ?>
+        // }
+        // map = new google.maps.Map(document.getElementById('map'), option);
+
         /*
         var marker = new google.maps.Marker({
             position: {lat: -6.9313, lng: 107.7173 },
@@ -52,6 +69,8 @@
         marker.addListener('click', function(){
           infoWindow.open(map, marker);
         });*/
+
+
 
         // Click map
         google.maps.event.addListener(map, 'click',
