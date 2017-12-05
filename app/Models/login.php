@@ -1,7 +1,7 @@
 <?php
   session_start();
 	if( isset($_SESSION['username']) ){
-		header("Location: Dashboard.php");
+		header("Location: dashboard.php");
 	}
   require 'database.php';
 
@@ -17,7 +17,7 @@
 			$baris = $cariuser->rowCount();
 			if($baris > 0 ){
 				$_SESSION["username"] = $_POST["form-username"];
-				header("Location: Dashboard.php");
+				header("Location: dashboard.php");
 			} else {
 				$peringatan = "<script>alert ('Invalid Username or Password!');</script>";
 				echo $peringatan;

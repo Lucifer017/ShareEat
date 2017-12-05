@@ -83,7 +83,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 social-login">
-                        	<h3><a href="registrasi.html">Sign Up!</a> or login with:</h3>
+                        	<h3><a href="register.php">Sign Up!</a> or login with:</h3>
                         	<div class="social-login-buttons">
 	                        	<a class="btn btn-link-1 btn-link-1-facebook" href="#">
 	                        		<i class="fa fa-facebook"></i> Facebook

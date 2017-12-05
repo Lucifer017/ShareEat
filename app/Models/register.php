@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap Multi Step Registration Form Template</title>
+        <title>Registration || ShareEat</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -34,6 +34,7 @@
     <body>
 
 		<!-- Top menu -->
+    <!--
 		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -45,7 +46,9 @@
 					</button>
 					<a class="navbar-brand" href="index.html">Bootstrap Multi Step Registration Form Template</a>
 				</div>
+      -->
 				<!-- Collect the nav links, forms, and other content for toggling -->
+        <!--
 				<div class="collapse navbar-collapse" id="top-navbar-1">
 					<ul class="nav navbar-nav navbar-right">
 						<li>
@@ -67,7 +70,7 @@
 				</div>
 			</div>
 		</nav>
-
+  -->
         <!-- Top content -->
         <div class="top-content">
 
@@ -75,11 +78,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Bootstrap</strong> Multi Step Registration Form</h1>
+                            <h1><strong>ShareEat</strong> Registration Form</h1>
                             <div class="description">
                             	<p>
-	                            	This is a free responsive multi-step registration form made with Bootstrap.
-	                            	Download it on <a href="http://azmind.com"><strong>AZMIND</strong></a>, customize and use it as you like!
+                                This is a food sharing website which bring together between Giver and The Needy.
+	                            	Let's share on <a href="index.php"><strong>ShareEat</strong></a>, because sharing is caring!
                             	</p>
                             </div>
                         </div>
@@ -87,12 +90,12 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
 
-                        	<form role="form" action="" method="post" class="registration-form">
+                        	<form role="form" action="daftar.php" method="post" class="registration-form">
 
                         		<fieldset>
 		                        	<div class="form-top">
 		                        		<div class="form-top-left">
-		                        			<h3>Step 1 / 3</h3>
+		                        			<h3>Step 1 / 2</h3>
 		                            		<p>Tell us who you are:</p>
 		                        		</div>
 		                        		<div class="form-top-right">
@@ -109,18 +112,27 @@
 				                        	<input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
 				                        </div>
 				                        <div class="form-group">
-				                        	<label class="sr-only" for="form-about-yourself">About yourself</label>
-				                        	<textarea name="form-about-yourself" placeholder="About yourself..."
-				                        				class="form-about-yourself form-control" id="form-about-yourself"></textarea>
+				                        	<label class="sr-only" for="form-username">Username</label>
+				                        	<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+				                        </div>
+                                <div class="form-group">
+				                        	<label class="sr-only" for="form-phone-number">Phone number</label>
+				                        	<input type="text" name="form-phone-number" placeholder="Phone number..." class="form-phone-number form-control" id="form-phone-number">
 				                        </div>
 				                        <button type="button" class="btn btn-next">Next</button>
 				                    </div>
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-offset-3 social-login">
+                                	<h3 style="color:green;">Have an account?<a href="index.php"> Login</a></h3>
+
+                                </div>
+                            </div>
 			                    </fieldset>
 
 			                    <fieldset>
 		                        	<div class="form-top">
 		                        		<div class="form-top-left">
-		                        			<h3>Step 2 / 3</h3>
+		                        			<h3>Step 2 / 2</h3>
 		                            		<p>Set up your account:</p>
 		                        		</div>
 		                        		<div class="form-top-right">
@@ -142,10 +154,16 @@
 				                        				class="form-repeat-password form-control" id="form-repeat-password">
 				                        </div>
 				                        <button type="button" class="btn btn-previous">Previous</button>
-				                        <button type="button" class="btn btn-next">Next</button>
+				                        <button type="submit" class="btn" name="signupbtn">Sign me up!</button>
 				                    </div>
-			                    </fieldset>
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-offset-3 social-login">
+                                	<h3 style="color:green;">Have an account?<a href="index.php"> Login</a></h3>
 
+                                </div>
+                            </div>
+			                    </fieldset>
+                          <!--
 			                    <fieldset>
 		                        	<div class="form-top">
 		                        		<div class="form-top-left">
@@ -172,7 +190,7 @@
 				                        <button type="button" class="btn btn-previous">Previous</button>
 				                        <button type="submit" class="btn">Sign me up!</button>
 				                    </div>
-			                    </fieldset>
+			                    </fieldset> -->
 
 		                    </form>
 
