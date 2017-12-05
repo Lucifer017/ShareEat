@@ -34,10 +34,11 @@
     <body>
 
 		<!-- Top menu -->
-    <!--
+
 		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
+          <!--
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
@@ -45,12 +46,14 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="index.html">Bootstrap Multi Step Registration Form Template</a>
-				</div>
-      -->
+          -->
+      	</div>
+
 				<!-- Collect the nav links, forms, and other content for toggling -->
-        <!--
+
 				<div class="collapse navbar-collapse" id="top-navbar-1">
-					<ul class="nav navbar-nav navbar-right">
+<!--
+          <ul class="nav navbar-nav navbar-right">
 						<li>
 							<span class="li-text">
 								Put some text or
@@ -67,15 +70,17 @@
 							</span>
 						</li>
 					</ul>
+          -->
 				</div>
 			</div>
 		</nav>
-  -->
+
         <!-- Top content -->
         <div class="top-content">
 
             <div class="inner-bg">
                 <div class="container">
+
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>ShareEat</strong> Registration Form</h1>
