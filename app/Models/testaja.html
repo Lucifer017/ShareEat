@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+   #map {
+    height: 400px;
+    width: 100%;
+   }
+</style>
+
+</head>
+<body>
+  <h3>ShareEat</h3>
+  <div id="map"></div>
+<h2>JQUERY AJAX</h2>
+<div id="lat"></div>
+<div id="lng"></div>
+<button id="tombol">Update lokasi!</button>
+
+
+<script>
+
+</script>
+<script>
+  var infoWindow;
+
+  function initMap(){
+
+    var map = new google.maps.Map(document.getElementById('map'),{
+      zoom:15,
+      center:{lat: -34.397, lng: 150.644}
+    });
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        $(document).ready(function(){
+          $('#tombol').click(function(){
+            $.ajax({
+              method: "POST",
+              url: "test.php",
+              data: {
+                latitude:pos.lat,
+                longitude:pos.lng
+              }
+            }).done(function(data2, data3){
+              $('#lat').html(data2),
+              $('#lng').html(data3)
+            });
+          });
+          // $('#tombol2').click(function(){
+          //   $.ajax({
+          //     method: "POST",
+          //     url: "test.php",
+          //     data: {
+          //       longitude:pos.lng,
+          //
+          //     }
+          //   }).done(function(data3){
+          //     $('#lng').html(data3)
+          //   });
+          // });
+        });
+        var map = new google.maps.Map(document.getElementById('map'),{
+          zoom:15,
+          center:{lat: pos.lat, lng: pos.lng}
+        });
+
+        var marker = [
+          {
+            coords:{lat: pos.lat, lng: pos.lng },
+            iconImage:'https://i.imgur.com/tquMa3E.png',
+            content:'<h1>Irfan Firdaus</h1>'
+          }
+        ];
+
+        for(var i = 0; i<marker.length;i++){
+          addMarker(marker[i]);
+        }
+
+        function addMarker(obj){
+          var marker = new google.maps.Marker({
+              position: obj.coords,
+              map: map,
+            });
+
+            if(obj.iconImage){
+              marker.setIcon(obj.iconImage);
+            }
+
+            if(obj.content){
+              var infoWindow = new google.maps.InfoWindow({
+                content:obj.content
+              })
+
+              marker.addListener('click', function(){
+                infoWindow.open(map, marker);
+              });
+            }
+        }
+      },
+
+      function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    }else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+
+
+  }
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+                          'Error: The Geolocation service failed.' :
+                          'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
+  }
+
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7h1HvvQEbhRiwxONvAQnDlquHFCBxpr4&callback=initMap">
+</script>
+</body>
+</html>

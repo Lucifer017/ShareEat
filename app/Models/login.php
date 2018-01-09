@@ -9,7 +9,7 @@
 		if(!empty($_POST['form-username']) && !empty($_POST['form-password'])){
 
 
-      $cariuser = $conn->prepare("SELECT * FROM info_user WHERE username='".$_POST['form-username']."'AND password='".$_POST['form-password']."'") ;
+      $cariuser = $conn->prepare("SELECT * FROM info_user WHERE username='".$_POST['form-username']."'AND password='".md5($_POST['form-password'])."'") ;
       $cariuser->execute();
       $user = $cariuser->fetch(PDO::FETCH_ASSOC);
        // var_dump($user);
@@ -21,6 +21,7 @@
 			} else {
 				$peringatan = "<script>alert ('Invalid Username or Password!');</script>";
 				echo $peringatan;
+        // header("Location: index.php");
 			}
 		}else {
 

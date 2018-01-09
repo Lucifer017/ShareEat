@@ -1,5 +1,6 @@
 <?php
-  class UserTest extends \PHPUnit_Framework_TestCase{
+  require_once "PHPUnit/Framework/TestCase.php"
+  class UserTest extends PHPUnit_Framework_TestCase{
 
     // public function AmbilFirstName(){
     //   $user = new \app\Models\User;

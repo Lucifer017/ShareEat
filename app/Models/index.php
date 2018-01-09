@@ -2,13 +2,43 @@
 <?php
   session_start();
   if( isset($_SESSION['username']) ){
-    header("Location: Dashboard.php");
+    header("Location: dashboard.php");
   }
+  require 'database.php';
+
+  if(isset($_POST["signinbtn"])){
+  	if(!empty($_POST['form-username']) && !empty($_POST['form-password'])){
+
+
+      $cariuser = $conn->prepare("SELECT * FROM info_user WHERE username='".$_POST['form-username']."'AND password='".md5($_POST['form-password'])."'") ;
+      $cariuser->execute();
+      $user = $cariuser->fetch(PDO::FETCH_ASSOC);
+         // var_dump($user);
+        // die($user["user"]);
+  		$baris = $cariuser->rowCount();
+  		if($baris > 0 ){
+  			$_SESSION["username"] = $_POST["form-username"];
+  			header("Location: dashboard.php");
+  		} else {
+  			// $peringatan = "<script>alert ('Invalid Username or Password!');</script>";
+  			// echo $peringatan;
+        // // header("Location: index.php");
+        echo'
+          <script type="text/javascript">
+            alert("Login failed! Invalid username or password");
+          </script>
+        ';
+  		}
+  	}else {
+
+  	}
+  }
+
 ?>
 <html lang="en">
 
     <head>
-
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +48,7 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/css/form-elements.css">
+		    <link rel="stylesheet" href="assets/css/form-elements.css">
         <link rel="stylesheet" href="assets/css/style.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -67,7 +97,7 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="login.php" method="post" class="login-form">
+			                    <form role="form" action="index.php" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Username</label>
 			                        	<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
@@ -78,10 +108,12 @@
 			                        </div>
 			                        <button type="submit" name="signinbtn" class="btn">Sign in!</button>
 			                    </form>
+
+
 		                    </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 social-login">
                         	<h3><a href="register.php">Sign Up!</a> or login with:</h3>
                         	<div class="social-login-buttons">
@@ -96,7 +128,7 @@
 	                        	</a>
                         	</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
